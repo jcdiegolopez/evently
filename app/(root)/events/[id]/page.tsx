@@ -6,7 +6,7 @@ import { SearchParamProps } from "@/types"
 import Image from "next/image";
 
 const EventDetails = async ( {params: {id}, searchParams}: SearchParamProps) => {
-    
+    const page = Number(searchParams?.page) || 1;
     const event = await getEventById(id);
     const relatedEvents = await getRelatedEventsByCategory({categoryId: event.category._id, eventId: event._id , page: searchParams.page as string});
   return (
@@ -72,8 +72,8 @@ const EventDetails = async ( {params: {id}, searchParams}: SearchParamProps) => 
             emptyStateSubtext={'Come back later'}
             collectionType="All_Events"
             limit={6}
-            page={1}
-            totalPages={2}
+            page={page}
+            totalPages={relatedEvents?.totalPages}
           />
       </section>
     </>

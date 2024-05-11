@@ -30,7 +30,7 @@ const Card = ( {
         style={{backgroundImage: `url(${event.imageUrl})`}}
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"/>
            
-        {isEventCreator && !hidePrice && (
+        {(isEventCreator && !hidePrice) && (
             <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
                 <Link href={`/events/${event._id}/update`}>
                     <Image src="/assets/icons/edit.svg" alt="Edit" width={20} height={20}/>
